@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Dashboard</h2>
+
+  <div class="row">
+    <!-- Call signals/functions if needed: stats() -->
+    <!-- <div class="col-md-3 mb-3" *ngFor="let stat of stats"> -->
+      <div class="col-md-3 mb-3" *ngFor="let stat of stats()">
+      <div class="card text-white {{ stat.colorClass }}">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi {{ stat.icon }} fs-1 me-3"></i>
+          <div>
+            <h5 class="card-title">{{ stat.title }}</h5>
+            <h3>{{ stat.value }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-header">
+      Recent Activities
+    </div>
+    <ul class="list-group list-group-flush">
+      <!-- Call signal/function if needed: recentActivities() -->
+      <!-- <li class="list-group-item" *ngFor="let activity of recentActivities"> -->
+        <li class="list-group-item" *ngFor="let activity of recentActivities()">
+        {{ activity }}
+      </li>
+    </ul>
+  </div>
+</div>

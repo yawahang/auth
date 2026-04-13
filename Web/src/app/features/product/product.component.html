@@ -1,0 +1,79 @@
+<h2>Product</h2>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="id" />
+
+  <!-- Name -->
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" formControlName="name" />
+    <div class="error" *ngIf="f['name'].touched && f['name'].invalid">
+      <small *ngIf="f['name'].errors?.['required']">Name is required</small>
+      <small *ngIf="f['name'].errors?.['minlength']">Min 3 characters</small>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="form-group">
+    <label>Price</label>
+    <input type="number" formControlName="price" />
+    <div class="error" *ngIf="f['price'].touched && f['price'].invalid">
+      <small *ngIf="f['price'].errors?.['required']">Price is required</small>
+      <small *ngIf="f['price'].errors?.['min']">Must be > 0</small>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <button type="submit">{{ isEditMode() ? 'Update' : 'Create' }}</button>
+  <button type="button" (click)="resetForm()">Reset</button>
+</form>
+
+<hr />
+
+<h3>Product List</h3>
+
+<!-- 🔍 Search -->
+<div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+  
+  <input type="text" placeholder="Search product..." 
+       (input)="searchTerm.set($any($event.target).value)" />
+</div>
+
+<table border="1" cellpadding="8" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of filteredProducts()">
+      <td>{{ p.id }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.price }}</td>
+      <td>
+        <button (click)="onEdit(p)">Edit</button>
+        <button (click)="onDelete(p.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div style="margin-top: 10px; display: flex; justify-content: center; gap: 5px;">
+  <button (click)="changePage(currentPage() - 1)" [disabled]="currentPage() === 1">Prev</button>
+
+  <!-- <button *ngFor="let p of totalPages() | numberArray"
+          (click)="changePage(p)"
+          [disabled]="currentPage() === p">{{ p }}</button> -->
+ <button *ngFor="let p of (totalPages() | numberArray) || []"
+        (click)="changePage(p)"
+        [disabled]="currentPage() === p">
+  {{ p }}
+</button>
+
+  <button (click)="changePage(currentPage() + 1)" [disabled]="currentPage() === totalPages()">Next</button>
+</div>

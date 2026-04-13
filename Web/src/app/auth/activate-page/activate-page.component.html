@@ -1,0 +1,21 @@
+
+       <div class="activate-wrapper">      
+         <button 
+           class="activate-btn" 
+           [disabled]="isActive" 
+           (click)="onActivate()">
+           {{ isActive ? 'Activated' : 'Activate' }}
+         </button>             
+         <p *ngIf="isActive" class="active-message">
+           ✅ Account is Active
+         </p>
+
+          <!-- <div class="overplay" *ngIf="loading">
+          <div class="spinner"></div>
+          <div class="loading-text">Activating Account...</div>
+
+         </div> -->
+       </div>
+
+       
+    

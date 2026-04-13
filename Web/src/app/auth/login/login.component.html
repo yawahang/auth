@@ -1,0 +1,141 @@
+<div class="auth-container">
+
+  <!-- Left Section -->
+  <div class="left-section">
+    <div class="branding">
+      <h1>SecureAuth</h1>
+      <div class="branding-subtitle">
+        Access Management
+      </div>
+      <br>
+      <h2>Welcome</h2>
+        <p>Sigin in to continue your dashboard and Manage your Secure access.</p>
+    </div>
+  </div>
+
+  <!-- Right Section -->
+  <div class="right-section">
+
+    <div class="auth-card">
+
+   
+      <h2 *ngIf="isSignupMode">Login</h2>
+      <h2 *ngIf="!isSignupMode">Register</h2>
+
+   
+      <form *ngIf="isSignupMode" [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <input type="email" placeholder="Email" formControlName="email" />
+
+        <div *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+          <small *ngIf="loginForm.controls['email'].errors?.['required']">
+            Email is required
+          </small>
+          <small *ngIf="loginForm.controls['email'].errors?.['email']">
+            Enter a valid email
+          </small>
+        </div>
+
+        <input type="password" placeholder="Password" formControlName="password" />
+
+        <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+          <small *ngIf="loginForm.controls['password'].errors?.['required']">
+            Password is required
+          </small>
+          <small *ngIf="loginForm.controls['password'].errors?.['minlength']">
+            Minimum 6 characters required
+          </small>
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid">
+          Login
+        </button>
+
+      <p class="auth-switch">
+        Don't have an account?
+      <a (click)="toggleAuth()">Register</a>
+     </p>
+
+      </form>
+
+   
+      <form *ngIf="!isSignupMode" [formGroup]="registerForm" (ngSubmit)="signup()">
+
+        <input type="text" placeholder="Full Name" formControlName="fullName"/>
+
+        <div *ngIf="registerForm.controls['fullName'].touched && registerForm.controls['fullName'].invalid">
+          <small *ngIf="registerForm.controls['fullName'].errors?.['required']">
+            Full name is required
+          </small>
+          <small *ngIf="registerForm.controls['fullName'].errors?.['minlength']">
+            Minimum 3 characters required
+          </small>
+        </div>
+
+        <input type="email" placeholder="Email" formControlName="email"/>
+
+        <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
+          <small *ngIf="registerForm.controls['email'].errors?.['required']">
+            Email is required
+          </small>
+          <small *ngIf="registerForm.controls['email'].errors?.['email']">
+            Enter a valid email
+          </small>
+        </div>
+
+        <input type="password" placeholder="Password" formControlName="password"/>
+
+        <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].invalid">
+          <small *ngIf="registerForm.controls['password'].errors?.['required']">
+            Password is required
+          </small>
+          <small *ngIf="registerForm.controls['password'].errors?.['minlength']">
+            Minimum 6 characters required
+          </small>
+          <small *ngIf="registerForm.controls['password'].errors?.['pattern']">
+            Must contain 1 uppercase letter and 1 number
+          </small>
+        </div>
+
+         <input 
+  type="password" 
+  placeholder="Confirm Password" 
+  formControlName="confirmPassword"
+/>
+
+<div *ngIf="registerForm.controls['confirmPassword'].touched && registerForm.controls['confirmPassword'].invalid">
+  <small *ngIf="registerForm.controls['confirmPassword'].errors?.['required']">
+    Confirm password is required
+  </small>
+</div>
+
+<!-- Password Match Error -->
+<div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.controls['confirmPassword'].touched">
+  <small>
+    Passwords do not match
+  </small>
+</div>
+
+        <button type="submit" [disabled]="registerForm.invalid">
+          Create Account
+        </button>
+
+              <p class="auth-switch">
+        Don't have an account?
+      <a (click)="toggleAuth()">Login</a>
+     </p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Loader Overlay -->
+ <div class="overlay" *ngIf="loading">
+<div class="spinner"></div>
+<div class="loading-text">Please wait...</div>
+
+ </div>

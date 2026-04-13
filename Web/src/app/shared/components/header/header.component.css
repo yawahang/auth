@@ -1,0 +1,52 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1976d2;
+  color: white;
+  padding: 10px 20px;
+}
+
+.right {
+  position: relative;
+}
+
+/* User icon styling */
+.profile-icon {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.profile-icon:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 6px;
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+.dropdown ul {
+  list-style: none; /* remove dots */
+  margin: 0;
+  padding: 5px 0;
+}
+
+.dropdown li {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background: #f1f1f1;
+}

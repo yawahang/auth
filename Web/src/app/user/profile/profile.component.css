@@ -1,0 +1,19 @@
+.profile-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}

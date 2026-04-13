@@ -1,0 +1,60 @@
+
+
+<div class="auth-card">
+  <h2>Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+
+    <!-- Full Name -->
+    <input type="text" placeholder="Full Name" formControlName="fullName"/>
+
+    <div *ngIf="registerForm.controls['fullName'].touched && registerForm.controls['fullName'].invalid">
+  <small *ngIf="registerForm.controls['fullName'].errors?.['required']">
+    Full name is required
+  </small>
+  <small *ngIf="registerForm.controls['fullName'].errors?.['minlength']">
+    Minimum 3 characters required
+  </small>
+</div>
+
+
+    <!-- Email -->
+    <input type="email" placeholder="Email" formControlName="email"/>
+
+    <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
+      <small *ngIf="registerForm.controls['email'].errors?.['required']">
+        Email is required
+      </small>
+      <small *ngIf="registerForm.controls['email'].errors?.['email']">
+        Enter a valid email
+      </small>
+    </div>
+
+
+    <!-- Password -->
+    <input type="password" placeholder="Password" formControlName="password"/>
+
+    <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].invalid">
+      <small *ngIf="registerForm.controls['password'].errors?.['required']">
+        Password is required
+      </small>
+      <small *ngIf="registerForm.controls['password'].errors?.['minlength']">
+        Minimum 6 characters required
+      </small>
+      <small *ngIf="registerForm.controls['password'].errors?.['pattern']">
+        Must contain 1 uppercase letter and 1 number
+      </small>
+    </div>
+
+
+    <button type="submit" [disabled]="registerForm.invalid">
+      Create Account
+    </button>
+
+    <p>
+      Already have an account?
+      <a [routerLink]="['/login']">Login</a>
+    </p>
+
+  </form>
+</div>

@@ -1,0 +1,21 @@
+<header class="app-header">
+  <div class="left">
+    <h4>Secure Web Auth</h4>
+  </div>
+  <div class="right">  
+    <div class="profile-icon" (click)="toggleMenu($event)">
+      <i class="fa fa-user">
+ <div class="profile" *ngIf="users.length > 0">
+  👤 {{ users[0].fullName }}
+</div>
+      </i>
+    </div>
+    <div class="dropdown" *ngIf="isMenuOpen" (click)="$event.stopPropagation()">
+      <ul>
+        <li (click)="goProfile()">Profile</li>
+        <li (click)="goSettings()">Settings</li>
+        <li (click)="logout()">Logout</li>
+      </ul>
+    </div>
+  </div>
+</header>

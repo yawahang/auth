@@ -1,0 +1,72 @@
+.sidebar {
+  width: 240px;
+  height: 100%;
+  background: #1e293b; /* dark slate */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* pushes footer to bottom */
+  padding: 16px 0;
+}
+
+/* Menu */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 8px 0;
+}
+
+.menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #cbd5f5;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  background: #334155;
+  color: #fff;
+}
+
+.menu a.active {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* Footer (Logout) */
+.footer {
+  padding: 0 20px;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  background: #ef4444;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* .disabled {
+  background-color: grey;
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+} */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
